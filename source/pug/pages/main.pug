@@ -1,29 +1,36 @@
 extends ../base/layout
 
 block variables
-  - const title = "ProjectName" //- на страницах кроме главной используйте О нас — ProjectName
+  - const title = "brushMask" //- на страницах кроме главной используйте О нас — ProjectName
   - const wrapperMods = ""
-  - const hasHeader = true
+  - const hasHeader = false
   - const headerMods = ""
-  - const hasFooter = true
+  - const hasFooter = false
   - const footerMods = ""
   - const currentPage = "main" //- для остальных страниц пишем пустую строку или индекс активного headerLinks
 
 block main
   main
     .container
-      //- Все данные должны выноситься в pug/data, привязываясь к бэм, а не к странице
-      //- т.е у вас будет pug/data/features.pug || intro.pug, а не main.pug || catalog.pug
-      p(style="margin-top: 40px;") Пример импорта из `pug/data`
-      h3!= heading.title
-      p= heading.description
-      p!= heading.description
-      p !{heading.description}
-      //- != и !{} позволяют html отрабатывать в pug, используйте их по умолчанию
-      //- варианты когда в тексте требуется отобразить <b>тест</b> тегами встречается редко
-
-      p(style="margin-top: 40px;") Пример использования +img()
-      p(style="margin-bottom: 40px;")
-        +img("content", "placeholder", "png", 120, 120, "Пример")
-
+      .brush
+        <svg class="brush__img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 749 720" width="749" height="720">
+          <image width="749" height="720" xlink:href="img/svg/boot-line.svg" mask="url('#brush-mask')"/>
+          <defs>
+            <filter id="f1" x="0" y="0">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+            </filter>
+            <mask id="brush-mask">
+              <svg width="749" height="720" viewBox="0 0 749 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_20)">
+              <path filter="url(#f1)" stroke-linecap="round" stroke-linejoin="round" class="mask-path" fill="none" stroke="#fff" d="M0 0C1.43788 41.9376 460.257 186.644 568 253C659.065 309.085 647.446 327.252 557.5 338C478 347.5 263 281 51.5 210.5C243 353.5 623.592 450.748 672 494C729.471 545.349 656.637 553.273 532.5 538.62C433.191 526.898 253.264 454.811 147.5 409C308 494 645.12 592.873 696.5 605C760.725 620.158 751.325 676.575 657.5 681.5C541.991 687.563 237 621.5 168.5 503.5L64.5 720.5" stroke="black" stroke-width="75"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_6_20">
+                  <rect width="749" height="720" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            </mask>
+          </defs>
+        </svg>
 block modals
