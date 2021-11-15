@@ -1,6 +1,6 @@
 class Brush {
-  constructor(config) {
-    this.node = config.node;
+  constructor(node, config) {
+    this.node = node;
     this.path = this._getPath();
     this.pathLength = this.path.getTotalLength();
     this.time = config.time;
@@ -40,8 +40,7 @@ class Brush {
 const initBrush = () => {
   const brushImage = document.querySelector('.brush');
 
-  const bootBrush = new Brush({
-    node: brushImage,
+  const bootBrush = new Brush(brushImage, {
     time: 2.7,
     ease: 'slow',
   });
